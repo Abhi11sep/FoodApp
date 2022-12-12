@@ -1,0 +1,23 @@
+#navbar{
+    display: flex;
+    padding-left: 5%;
+    background-color: rgb(202, 196, 196);
+    justify-content: space-between;
+    padding-right: 5%;
+}
+#options{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+#main div img{
+    width: 350px;
+}
+#main div p{
+   font-size: 20px;
+  padding: 25px;
+   position: absolute;
+   top: 120px;
+   left: 400px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="navitem"></div>
+    <div>
+        <!-- <input type="text" placeholder="Search recipe by name" id="byname">
+        <button onclick="getdata()">search</button> -->
+    </div>
+    <div id="main"></div>
+</body>
+<script type="module">
+
+    import {navbar,getdata,display} from './nav.js';
+    console.log(navbar);
+
+    let navitem=document.getElementById("navitem");
+    navitem.innerHTML=navbar();
+
+    // let recipename=document.getElementById("byname").value;
+    
+    let x=await getdata(`https://www.themealdb.com/api/json/v1/1/search.php?s=biryani`)
+    console.log(x);
+
+    let main=document.getElementById("main");
+    display(x,main);
+    user();
+</script>
+</html>

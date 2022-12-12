@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    #searchbox{
+        width: 30%;
+        margin: 15px auto;
+       
+        border-radius: 5px;
+    }
+    #searchbox input{
+        padding: 5px 35px;
+        font-size: 16px;
+    }
+    #searchbox button{
+        padding: 5px 35px;
+        font-size: 16px;
+    }
+</style>
+<body>
+    <div id="navitem"></div>
+    <div id="searchbox">
+        <input type="text" placeholder="Search recipe by name" id="byname">
+        <button onclick="result()">search</button>
+    </div>
+    <div id="main"></div>
+</body>
+<script>
+    
+    function result(){
+        let recipename=document.getElementById('byname').value;
+        console.log(recipename);
+        localStorage.setItem("result",JSON.stringify (recipename));
+        window.location.reload();
+    }
+</script>
+<script type="module">
+
+    import {navbar,getdata,display,user} from './nav.js';
+    console.log(navbar);
+
+    let navitem=document.getElementById("navitem");
+    navitem.innerHTML=navbar();
+
+    user();
+
+    let recipename=JSON.parse(localStorage.getItem('result'));
+   
+    let x=await getdata(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipename}`)
+    console.log(x);
+
+    let main=document.getElementById("main");
+    display(x,main);
+
+</script>
+</html>

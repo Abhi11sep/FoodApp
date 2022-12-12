@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter name" id="name">
+    <input type="text" placeholder="Enter Password" id="password">
+    <button onclick="data()">SIGNUP</button>
+    
+</body>
+<script>
+ function data(){
+    let name=document.getElementById("name").value;
+    let password=document.getElementById("password").value;
+    let s1=new signup(name,password);
+    localStorage.setItem("userdata",JSON.stringify(s1));
+    window.location.href="index.html";
+ }
+
+ class signup{
+    constructor(name,password){
+        this.name=name;
+        this.password=password;
+        
+    }
+ }
+</script>
+</html>
